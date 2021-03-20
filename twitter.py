@@ -6,6 +6,15 @@ import re
 # TODO: Return Artists or Song Titles, etc
 
 import TOKENS
+import topSongs
+
+song_list = topSongs.get_top_songs()
+artist_list = topSongs.get_top_artists()
+
+def parseTweet(list):
+    for string in list:
+        if string in artist_list:
+            artist_list[string] = artist_list[string] + 1
 
 
 # # # # Twitter Authenticator  # # # #
@@ -24,9 +33,15 @@ class TwitterListener(StreamListener):
 
     def on_status(self, status):
         TOKENS.counter += 1
-        adjusted = re.sub(r'\W+','',status.text).upper()
-        print(adjusted)
-        if TOKENS.counter < 100:
+        adjusted = re.sub(r'[^a-zA-Z0-9 ]','',status.text)
+        adjusted = adjusted.upper()
+
+        word_list = adjusted.split()
+        parseTweet(word_list)
+        # print(adjusted)
+        if(TOKENS.counter % 100 == 0):
+            print(TOKENS.counter)
+        if TOKENS.counter < 3000:
             return True
         else:
             return False
@@ -58,11 +73,15 @@ class TwitterStreamer():
 # # # # USED FOR TESTING TWITTER.PY # # # #
 if __name__ == "__main__":
     print("Inside twitter.py main")
-    testHashTagList = ["music", "rich brian"]
+    hashlist = list(artist_list.keys())
+    hashlist.append('music')
+    testHashTagList = hashlist
 
     twitter_streamer_instance = TwitterStreamer()
     twitter_streamer_instance.streamTweets(testHashTagList)
 
+    print(song_list)
+    print(artist_list)
     print("Execution finished")
 
 
