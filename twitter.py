@@ -75,7 +75,7 @@ class TwitterStreamer():
 
 
 # # # # USED FOR TESTING TWITTER.PY # # # #
-if __name__ == "__main__":
+def gettop10():
     print("Inside twitter.py main")
     hashlist = list(artist_list.keys())
     hashlist.append('music')
@@ -89,8 +89,6 @@ if __name__ == "__main__":
     top_10_artists = list(artist_list.keys())
     top_10_artists = top_10_artists[:10]
 
-    print(artist_list)
-    print(top_10_artists)
-    print("Execution finished")
+    return top_10_artists
 
 

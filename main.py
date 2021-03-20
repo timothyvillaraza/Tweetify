@@ -14,8 +14,8 @@ import tkinter.messagebox
 import os
 
 #importing the other files
-#whenever we need to add them do it here
-
+import twitter
+import spotify
 
 def launchFunc():
     print('bigJUICY')
