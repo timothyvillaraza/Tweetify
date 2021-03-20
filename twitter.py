@@ -7,9 +7,6 @@ import json
 import TOKENS
 
 
-
-
-
 # # # # Twitter Authenticator  # # # #
 class TwitterAuthenticator():
     """
@@ -21,10 +18,19 @@ class TwitterAuthenticator():
         return auth
 
 # # # # Twitter Listener # # # #
+
 class TwitterListener(StreamListener):
 
     def on_status(self, status):
-        print(status.text)
+        TOKENS.counter += 1
+        adjusted = status.text.upper()
+        adjusted = adjusted.replace(' ','')
+        adjusted = adjusted.replace('\n','')
+        print(adjusted)
+        if TOKENS.counter < 100:
+            return True
+        else:
+            return False
 
     def on_error(self, status):
         """
@@ -46,6 +52,7 @@ class TwitterStreamer():
         auth = self.twitter_authenticator.authetnicateTwitterApplication()  # Twitter authentication instance
 
         # Stream instance: Listens to public tweets after authentication and handles them based on listener object
+
         stream = Stream(auth, listener)
         stream.filter(track=hashTagList)
 
