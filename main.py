@@ -1,0 +1,3 @@
+import TEST
+
+TEST.test()
