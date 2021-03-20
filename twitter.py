@@ -22,16 +22,9 @@ class TwitterAuthenticator():
 
 # # # # Twitter Listener # # # #
 class TwitterListener(StreamListener):
-    def on_data(self, data):
-        """
-        Takes tweets from from stream listener
-        """
-        start_pos = data.find('"text"') + 7
-        end_pos = data.find('"source') -1
-        adjusted = data[start_pos:end_pos].upper()
-        print(adjusted)
-        return True
-        pass
+
+    def on_status(self, status):
+        print(status.text)
 
     def on_error(self, status):
         """
