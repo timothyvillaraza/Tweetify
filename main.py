@@ -10,15 +10,12 @@
 #importing gui libraries for main
 import tkinter as tk
 from tkinter import *
-import tkinter.messagebox
-import os
 
 #importing the other files
-import twitter
 import spotify
 
 def launchFunc():
-    print('bigJUICY')
+    spotify.generatePlaylist()
 
 def displayDescription():
     desc = tk.Toplevel()

@@ -9,14 +9,12 @@ import TOKENS
 import topSongs
 
 
-class artistList():
-    def __init__(self):
-        self.artist_list = topSongs.get_top_artists()
+artist_dict = topSongs.get_top_artists()
 
 def parseTweet(list):
     for string in list:
-        if string in artist_list:
-            artist_list[string] = artist_list[string] + 1
+        if string in artist_dict:
+            artist_dict[string] = artist_dict[string] + 1
 
 
 # # # # Twitter Authenticator  # # # #
@@ -43,7 +41,7 @@ class TwitterListener(StreamListener):
         # print(adjusted)
         if(TOKENS.counter % 100 == 0):
             print(TOKENS.counter)
-        if TOKENS.counter < 300:
+        if TOKENS.counter < 500:
             return True
         else:
             return False
@@ -78,11 +76,9 @@ class TwitterStreamer():
 
 # # # # USED FOR TESTING TWITTER.PY # # # #
 def gettop10():
-    top10ArtistsInstance = artistList()
-    artist_list = top10ArtistsInstance.artist_list
 
-    print("Inside twitter.py main")
-    hashlist = list(artist_list.keys())
+    print("Inside twitter.py ")
+    hashlist = list(artist_dict.keys())
     hashlist.append('music')
     testHashTagList = hashlist
 
@@ -90,10 +86,10 @@ def gettop10():
     twitter_streamer_instance.streamTweets(testHashTagList)
 
     #print(song_list)
-    artist_list = dict(sorted(artist_list.items(), key=lambda x: x[1],reverse=True))
+    artist_list = dict(sorted(artist_dict.items(), key=lambda x: x[1],reverse=True))
     top_10_artists = list(artist_list.keys())
     top_10_artists = top_10_artists[:10]
-
+    print(artist_list)
     return top_10_artists
 
 

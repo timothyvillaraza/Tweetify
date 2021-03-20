@@ -3,12 +3,13 @@ import re
 
 chart = billboard.ChartData('hot-100')
 
-top_artists = {}
+
 top_songs = {}
 
 
 def get_top_artists():
     i = 0
+    top_artists = {}
     while len(top_artists) < 25:
         entry = re.sub(r'\W+', '', chart[i].artist).upper()
         featureCount = entry.find("FEATURING")
