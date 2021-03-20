@@ -10,6 +10,7 @@
 #importing gui libraries for main
 import tkinter as tk
 from tkinter import *
+import tkinter.messagebox
 import os
 
 #importing the other files
@@ -20,7 +21,18 @@ def launchFunc():
     print('bigJUICY')
 
 def displayDescription():
-    print('primal bad')
+    desc = tk.Toplevel()
+    desc.title('Project Description')
+    descStr = "The goal of the project was to create a Spotify Playlist based off\n" \
+              "the current trending artists or songs. To do this we would use Twitter's\n" \
+              "API to look at the most current trends within the music industry and pull\n" \
+              "keywords. Once we collected enough data from the trending artists and song\n" \
+              "we would combine this with Spotify's API to generate a shareable playlist\n" \
+              "with the songs from the latest trends.\n"
+    desclbl = Label(desc,text=descStr)
+    desclbl.pack()
+
+
 
 
 
@@ -60,6 +72,4 @@ if __name__ == "__main__":
     #run it down
     root.mainloop()
 
-import TEST
 
-TEST.test()
