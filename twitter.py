@@ -8,8 +8,10 @@ import re
 import TOKENS
 import topSongs
 
-song_list = topSongs.get_top_songs()
-artist_list = topSongs.get_top_artists()
+
+class artistList():
+    def __init__(self):
+        self.artist_list = topSongs.get_top_artists()
 
 def parseTweet(list):
     for string in list:
@@ -76,6 +78,9 @@ class TwitterStreamer():
 
 # # # # USED FOR TESTING TWITTER.PY # # # #
 def gettop10():
+    top10ArtistsInstance = artistList()
+    artist_list = top10ArtistsInstance.artist_list
+
     print("Inside twitter.py main")
     hashlist = list(artist_list.keys())
     hashlist.append('music')
