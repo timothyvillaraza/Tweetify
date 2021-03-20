@@ -1,5 +1,3 @@
-import argparse
-import logging
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 from spotipy.oauth2 import SpotifyOAuth
@@ -7,7 +5,15 @@ import TOKENS
 
 birdy_uri = 'spotify:artist:2WX2uTcsvV5OnS0inACecP'
 post_uri = 'spotify:artist:246dkjvS1zLTtiykXe5h60'
+
+
+
+scope = 'playlist-modify-public'
+username = 'daniel_hrubec'
+token=SpotifyOAuth(scope=scope, username=username, client_id=TOKENS.SPOTIPY_CLIENT_ID, client_secret=TOKENS.SPOTIPY_CLIENT_SECRET, redirect_uri=TOKENS.SPOTIPY_REDIRECT_URI)
+
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=TOKENS.SPOTIPY_CLIENT_ID, client_secret=TOKENS.SPOTIPY_CLIENT_SECRET))
+spotifyObjectAuth = spotipy.Spotify(auth_manager=token)
 
 results = spotify.artist_albums(post_uri, album_type='album')
 albums = results['items']
@@ -22,7 +28,7 @@ for album in albums:
 
 lz_uri = 'spotify:artist:36QJpDe2go2KgaRleHCDTp'
 
-spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=TOKENS.SPOTIPY_CLIENT_ID, client_secret=TOKENS.SPOTIPY_CLIENT_SECRET))
+# spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=TOKENS.SPOTIPY_CLIENT_ID, client_secret=TOKENS.SPOTIPY_CLIENT_SECRET))
 results = spotify.artist_top_tracks(lz_uri)
 
 for track in results['tracks'][:10]:
@@ -32,24 +38,29 @@ for track in results['tracks'][:10]:
     print()
 
 
+#creating a playlist section
+
+playlist_name = 'Current Trending Songs'
+playlist_description = 'Playlist created from Twitters trending songs'
+spotifyObjectAuth.user_playlist_create(user=username,name=playlist_name,public=True,description=playlist_description)
+
+user_input = input("Enter in a song name(quit to exit): ")
+song_list = []
 
 
-def get_args():
-    parser = argparse.ArgumentParser(description='Creates a playlist for user')
-    parser.add_argument('-p', '--playlist', required=True,
-                        help='Name of Playlist')
-    parser.add_argument('-d', '--description', required=False, default='',
-                        help='Description of Playlist')
-    return parser.parse_args()
+while user_input != 'quit':
+    query = spotifyObjectAuth.search(q=user_input)
+    song_list.append(query['tracks']['items'][0]['uri'])
+    user_input = input("Enter in a song name(quit to exit): ")
 
 
-def main():
-    args = get_args()
-    scope = "playlist-modify-public"
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
-    user_id = sp.me()['id']
-    sp.user_playlist_create(user_id, args.playlist)
+#finding the playlist
+prePlaylist = spotifyObjectAuth.current_user_playlists()
+pl = prePlaylist['items'][0]['id']
+
+#try to add songs
+spotifyObjectAuth.playlist_add_items(playlist_id=pl,items=song_list,position=None)
 
 
-if __name__ == '__main__':
-    main()
+
+
