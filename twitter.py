@@ -2,6 +2,7 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
 import json
+import re
 # TODO: Return Artists or Song Titles, etc
 
 import TOKENS
@@ -23,9 +24,7 @@ class TwitterListener(StreamListener):
 
     def on_status(self, status):
         TOKENS.counter += 1
-        adjusted = status.text.upper()
-        adjusted = adjusted.replace(' ','')
-        adjusted = adjusted.replace('\n','')
+        adjusted = re.sub(r'\W+','',status.text).upper()
         print(adjusted)
         if TOKENS.counter < 100:
             return True
