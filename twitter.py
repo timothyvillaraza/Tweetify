@@ -49,9 +49,10 @@ class TwitterStreamer():
         stream = Stream(auth, listener)
         stream.filter(track=hashTagList)
 
+# # # # USED FOR TESTING TWITTER.PY # # # #
 if __name__ == "__main__":
     print("Inside twitter.py main")
-    testHashTagList = ["Joe Biden", "Donald Trump"]
+    testHashTagList = ["music", "rich brian"]
 
     twitter_streamer_instance = TwitterStreamer()
     twitter_streamer_instance.streamTweets(testHashTagList)
