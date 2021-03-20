@@ -9,7 +9,7 @@ post_uri = 'spotify:artist:246dkjvS1zLTtiykXe5h60'
 
 
 scope = 'playlist-modify-public'
-username = 'daniel_hrubec'
+username = 'xstriker9190'
 token=SpotifyOAuth(scope=scope, username=username, client_id=TOKENS.SPOTIPY_CLIENT_ID, client_secret=TOKENS.SPOTIPY_CLIENT_SECRET, redirect_uri=TOKENS.SPOTIPY_REDIRECT_URI)
 
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=TOKENS.SPOTIPY_CLIENT_ID, client_secret=TOKENS.SPOTIPY_CLIENT_SECRET))
@@ -60,7 +60,3 @@ pl = prePlaylist['items'][0]['id']
 
 #try to add songs
 spotifyObjectAuth.playlist_add_items(playlist_id=pl,items=song_list,position=None)
-
-
-
-
