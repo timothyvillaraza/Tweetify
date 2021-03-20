@@ -40,9 +40,26 @@ for track in results['tracks'][:10]:
 
 #creating a playlist section
 
-playlist_name = 'twitter spotify playlist test'
-playlist_description = 'bigNUT'
+playlist_name = 'Current Trending Songs'
+playlist_description = 'Playlist created from Twitters trending songs'
 spotifyObjectAuth.user_playlist_create(user=username,name=playlist_name,public=True,description=playlist_description)
+
+user_input = input("Enter in a song name(quit to exit): ")
+song_list = []
+
+
+while user_input != 'quit':
+    query = spotifyObjectAuth.search(q=user_input)
+    song_list.append(query['tracks']['items'][0]['uri'])
+    user_input = input("Enter in a song name(quit to exit): ")
+
+
+#finding the playlist
+prePlaylist = spotifyObjectAuth.current_user_playlists()
+pl = prePlaylist['items'][0]['id']
+
+#try to add songs
+spotifyObjectAuth.playlist_add_items(playlist_id=pl,items=song_list,position=None)
 
 
 
