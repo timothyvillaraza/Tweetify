@@ -1,10 +1,14 @@
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
-
+import json
 # TODO: Return Artists or Song Titles, etc
 
 import TOKENS
+
+
+
+
 
 # # # # Twitter Authenticator  # # # #
 class TwitterAuthenticator():
@@ -18,13 +22,9 @@ class TwitterAuthenticator():
 
 # # # # Twitter Listener # # # #
 class TwitterListener(StreamListener):
-    def on_data(self, data):
-        """
-        Takes tweets from from stream listener
-        """
-        print(data)
-        return True
-        pass
+
+    def on_status(self, status):
+        print(status.text)
 
     def on_error(self, status):
         """
