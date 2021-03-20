@@ -41,7 +41,7 @@ class TwitterListener(StreamListener):
         # print(adjusted)
         if(TOKENS.counter % 100 == 0):
             print(TOKENS.counter)
-        if TOKENS.counter < 3000:
+        if TOKENS.counter < 300:
             return True
         else:
             return False
@@ -70,6 +70,10 @@ class TwitterStreamer():
         stream = Stream(auth, listener)
         stream.filter(track=hashTagList)
 
+
+
+
+
 # # # # USED FOR TESTING TWITTER.PY # # # #
 if __name__ == "__main__":
     print("Inside twitter.py main")
@@ -80,8 +84,13 @@ if __name__ == "__main__":
     twitter_streamer_instance = TwitterStreamer()
     twitter_streamer_instance.streamTweets(testHashTagList)
 
-    print(song_list)
+    #print(song_list)
+    artist_list = dict(sorted(artist_list.items(), key=lambda x: x[1],reverse=True))
+    top_10_artists = list(artist_list.keys())
+    top_10_artists = top_10_artists[:10]
+
     print(artist_list)
+    print(top_10_artists)
     print("Execution finished")
 
 
