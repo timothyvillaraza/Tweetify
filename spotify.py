@@ -1,14 +1,14 @@
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
+import TOKENS
 
-SPOTIPY_CLIENT_ID='your-spotify-client-id'
-SPOTIPY_CLIENT_SECRET='your-spotify-client-secret'
-SPOTIPY_REDIRECT_URI='your-app-redirect-url'
+
 
 birdy_uri = 'spotify:artist:2WX2uTcsvV5OnS0inACecP'
-spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
+post_uri = 'spotify:artist:246dkjvS1zLTtiykXe5h60'
+spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=TOKENS.SPOTIPY_CLIENT_ID, client_secret=TOKENS.SPOTIPY_CLIENT_SECRET))
 
-results = spotify.artist_albums(birdy_uri, album_type='album')
+results = spotify.artist_albums(post_uri, album_type='album')
 albums = results['items']
 while results['next']:
     results = spotify.next(results)
