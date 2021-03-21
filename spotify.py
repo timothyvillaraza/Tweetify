@@ -23,7 +23,7 @@ def generatePlaylist():
 
     #creating a playlist section
 
-    playlist_name = 'Current Trending Songs'
+    playlist_name = 'Tweetify Playlist'
     playlist_description = 'Playlist created from Twitters trending songs'
     spotifyObjectAuth.user_playlist_create(user=username,name=playlist_name,public=True,description=playlist_description)
 
