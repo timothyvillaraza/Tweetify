@@ -54,10 +54,6 @@ def progressScreen():
     exitbtn.config(command=lambda : progressReport.destroy())
     exitbtn.config(state=DISABLED)
 
-    querycount = 0
-    artists = {}
-    messageFlag = False
-
     def update():
         """
         Called every second in a half to display loading information
@@ -79,7 +75,6 @@ def progressScreen():
 
         if querycount > 0:
             beginButton.config(state=DISABLED)
-
 
         if querycount == 500:
              exitbtn.config(state=NORMAL)
@@ -106,8 +101,8 @@ def displayDescription():
               "\n" \
               "The goal of the project was to create a Spotify Playlist based off\n" \
               "the current trending artists. To do this we would use Tweepy's\n" \
-              "API to look at the most current trends within the music industry and pull\n" \
-              "keywords. Once we collected enough data from the trending artists\n" \
+              "API to look at the most current trends on Twitter about the music industry and pull\n" \
+              "keywords from them. Once we collected enough data from the trending artists\n" \
               "we would combine this with Spotipy's API to generate a playlist\n" \
               "on the user's Spotify account with the songs from the latest trends.\n" \
               "\n" \
