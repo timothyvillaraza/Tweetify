@@ -18,8 +18,6 @@ import threading
 import twitter
 import spotify
 
-
-
 def createPlaylist():
     spotify.setusername(entry.get())
     th = threading.Thread(target=spotify.generatePlaylist)
@@ -141,6 +139,11 @@ if __name__ == "__main__":
     welcometxt = Label(root, text='Tweetify! ')
     welcometxt.config(font=('Gotham',35,'bold'))
     welcometxt.pack()
+
+    canvas = Canvas(root, width=400, height=400)
+    canvas.pack()
+    img = PhotoImage(file="tweetify.png")
+    canvas.create_image(50, 50, anchor=NW, image=img)
 
     #Description button controls
     projDescBtn = Button(root, text='Description')
