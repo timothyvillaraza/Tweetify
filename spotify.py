@@ -5,9 +5,15 @@ import TOKENS
 import twitter
 
 
+username = ""
+
+def setusername(str):
+    global username
+    username = str
+
 def generatePlaylist():
     scope = 'playlist-modify-public'
-    username = 'daniel_hrubec'
+    global username
     token=SpotifyOAuth(scope=scope, username=username, client_id=TOKENS.SPOTIPY_CLIENT_ID, client_secret=TOKENS.SPOTIPY_CLIENT_SECRET, redirect_uri=TOKENS.SPOTIPY_REDIRECT_URI)
 
     spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=TOKENS.SPOTIPY_CLIENT_ID, client_secret=TOKENS.SPOTIPY_CLIENT_SECRET))

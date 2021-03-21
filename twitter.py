@@ -11,6 +11,13 @@ import topSongs
 
 artist_dict = topSongs.get_top_artists()
 
+
+
+def getCounter():
+    return TOKENS.counter
+
+def getArtistDict():
+    return artist_dict
 def parseTweet(list):
     for string in list:
         if string in artist_dict:
