@@ -109,7 +109,7 @@ def displayDescription():
               "API to look at the most current trends within the music industry and pull\n" \
               "keywords. Once we collected enough data from the trending artists\n" \
               "we would combine this with Spotipy's API to generate a playlist\n" \
-              "on the user's Spotify account. With the songs from the latest trends.\n" \
+              "on the user's Spotify account with the songs from the latest trends.\n" \
               "\n" \
               "\n" \
               "---Credits---\n" \
