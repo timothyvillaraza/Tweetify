@@ -10,12 +10,45 @@
 #importing gui libraries for main
 import tkinter as tk
 from tkinter import *
+import threading
 
 #importing the other files
+
 import spotify
 
+
+
+def createPlaylist():
+    th = threading.Thread(target=spotify.generatePlaylist)
+    th.start()
+
+
+
+
+
+def progressScreen():
+    progressReport = tk.Toplevel()
+    progressReport.geometry("800x600")
+    querylbl = Label(progressReport, text=" tweets have been analyzed so far.")
+    querylbl.config(font=('Ink Free', 20, 'bold'))
+    querylbl.pack()
+
+
+    beginButton = Button(progressReport,text='Begin')
+    beginButton.config(font=('Ink Free', 15, 'bold'))
+    beginButton.config(bg='#d9d9d9')
+    beginButton.config(activebackground='#8f8f8f')
+    beginButton.config(activeforeground='#ffffff')
+    beginButton.place(x=350, y=500)
+    beginButton.config(command=createPlaylist)
+
+
+
+
 def launchFunc():
-    spotify.generatePlaylist()
+    th = threading.Thread(target=progressScreen)
+    th.start()
+
 
 def displayDescription():
     desc = tk.Toplevel()
@@ -36,12 +69,12 @@ def displayDescription():
 if __name__ == "__main__":
     #creating window
     root = tk.Tk()
-    root.title("Twitter Spotify Playlist : Launch")
+    root.title("Tweetify Launch")
     #default size
     root.geometry("800x600")
 
     #Welcome text controls
-    welcometxt = Label(root, text='Welcome!\nTwitter+Spotify=Playlist')
+    welcometxt = Label(root, text='Welcome to Tweetify!')
     welcometxt.config(font=('Ink Free',35))
     welcometxt.pack()
 
