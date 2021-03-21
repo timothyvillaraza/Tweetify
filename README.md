@@ -1,5 +1,3 @@
-Submission for The 2nd H-Act 2021
-
 ## Inspiration
 Our inspiration for the project came with wanting to learn how to create our own GUI application in addition to API calls and web scraping.
 
@@ -13,8 +11,14 @@ Tweetify scans through Twitter and looks for popular artists that people talk ab
 
 It then ranks the artists based on mentions and generates a Spotify playlist on the user's account.
 
+## How To Use
+- Provide the respective tokens in the TOKENS.py file.
+
+ - Open Tweetify and populate the white box under "Enter the Spotify username before running:". Once the white box is populated, click "Launch Application" then "Begin".
+ - Spotify may ask permission for Tweetify to modify playlists. Press accept and the program will run.
+
 ## How we built it
-The application is based on python, uses Tweepy to scan discord, Spoptipy to generate a playlist, and billboard.py to build a list of top 25 artists to query on twitter.
+The application is based on python, uses Tweepy to scan discord, Spoptipy to generate a playlist, and billboard.py to build a list of top 25 artists to query on Twitter.
 
 ## Challenges we ran into
 <ins>Data Scraping</ins>
@@ -41,9 +45,12 @@ As this is our first hackathon, team project, and python isn't our most used lan
 
 ## What's next for Tweetify
 - We would like to eventually sample data from other social media sources such as Reddit or Instagram to get broader statistics.
+- Allow the user to specify the number of tweets to search for. Currently, the default value is at 500 and must be changed in the source code.
+- Allow searching tweets specific to a region.
+- Allow the user to name a playlist or add to a playlist.
+-- Currently, Tweetify creates different playlists with the same name.
 
-## NOTES
+## Known Bugs
 - Elements may not display properly when compiled on Mac
-- TOKENS.py must be updated to your own tokens
-
-
+- Program will not generate Spotify playlists if less than nine unique artists are mentioned at least once.
+-- Simply run Tweetify again until the above condition is met.
