@@ -25,6 +25,7 @@ def createPlaylist():
 def progressScreen():
     progressReport = tk.Toplevel()
     progressReport.geometry("800x600")
+    progressReport.resizable(False, False)
 
     querylbl = Label(progressReport)
     querylbl.config(font=('Proxima Nova', 20,'bold'))
@@ -97,6 +98,8 @@ def launchFunc():
 def displayDescription():
     desc = tk.Toplevel()
     desc.title('Project Description')
+    desc.resizable(False, False)
+
     descStr = "\n" \
               "\n" \
               "The goal of the project was to create a Spotify Playlist based off\n" \
@@ -127,7 +130,7 @@ if __name__ == "__main__":
     #creating window
     root = tk.Tk()
     root.title("Tweetify Launch by Dan Hrubec, Devesh Patel, Timothy Villaraza")
-    # root.configure(bg="#191414")
+    root.resizable(False, False)
 
     #default size
     root.geometry("800x900")
