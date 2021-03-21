@@ -6,7 +6,6 @@
 #Project created for the following event: The Second H-Act
 
 
-
 #importing gui libraries for main
 import tkinter as tk
 from tkinter import *
@@ -23,11 +22,9 @@ def createPlaylist():
     th = threading.Thread(target=spotify.generatePlaylist)
     th.start()
 
-
 def progressScreen():
     progressReport = tk.Toplevel()
     progressReport.geometry("800x600")
-
 
     querylbl = Label(progressReport)
     querylbl.config(font=('Proxima Nova', 20,'bold'))
@@ -37,25 +34,23 @@ def progressScreen():
     artistlbl.config(font=('Proxima Nova', 15))
     artistlbl.pack()
 
-
     prgbar = Progressbar(progressReport, orient=HORIZONTAL,length=500,mode='determinate')
     prgbar.place(x=150,y=400)
 
     beginButton = Button(progressReport,text='Begin')
-    beginButton.config(font=('Ink Free', 15, 'bold'))
+    beginButton.config(font=('Proxima Nova', 15, 'bold'))
     beginButton.config(bg='#d9d9d9')
     beginButton.config(activebackground='#8f8f8f')
     beginButton.config(activeforeground='#ffffff')
     beginButton.place(x=350, y=450)
     beginButton.config(command=createPlaylist)
 
-
     exitbtn = Button(progressReport,text='Exit')
-    exitbtn.config(font=('Ink Free', 15, 'bold'))
+    exitbtn.config(font=('Proxima Nova', 15, 'bold'))
     exitbtn.config(bg='#d9d9d9')
     exitbtn.config(activebackground='#8f8f8f')
     exitbtn.config(activeforeground='#ffffff')
-    exitbtn.place(x=355, y=510)
+    exitbtn.place(x=358, y=510)
     exitbtn.config(command=lambda : progressReport.destroy())
     exitbtn.config(state=DISABLED)
 
@@ -64,6 +59,9 @@ def progressScreen():
     messageFlag = False
 
     def update():
+        """
+        Called every second in a half to display loading information
+        """
         querycount = twitter.getCounter()
         artists = twitter.getArtistDict()
         artists = dict(sorted(artists.items(), key=lambda x: x[1], reverse=True))
@@ -79,8 +77,6 @@ def progressScreen():
         querylbl.config(text=lblstring)
         artistlbl.config(text=artiststring)
 
-
-
         if querycount > 0:
             beginButton.config(state=DISABLED)
 
@@ -91,38 +87,43 @@ def progressScreen():
         else:
             progressReport.after(1500, update)
 
-
-
-
-
-
     update()
     progressReport.mainloop()
 
 
-
-
-
-
-
 def launchFunc():
+    """
+    Starts a new thread for the loading screen
+    """
     th = threading.Thread(target=progressScreen)
-
     th.start()
 
 
 def displayDescription():
     desc = tk.Toplevel()
     desc.title('Project Description')
-    descStr = "The goal of the project was to create a Spotify Playlist based off\n" \
-              "the current trending artists or songs. To do this we would use Twitter's\n" \
+    descStr = "\n" \
+              "\n" \
+              "The goal of the project was to create a Spotify Playlist based off\n" \
+              "the current trending artists. To do this we would use Tweepy's\n" \
               "API to look at the most current trends within the music industry and pull\n" \
-              "keywords. Once we collected enough data from the trending artists and song\n" \
-              "we would combine this with Spotify's API to generate a shareable playlist\n" \
-              "with the songs from the latest trends.\n"
+              "keywords. Once we collected enough data from the trending artists\n" \
+              "we would combine this with Spotipy's API to generate a playlist\n" \
+              "on the user's Spotify account. With the songs from the latest trends.\n" \
+              "\n" \
+              "\n" \
+              "---Credits---\n" \
+              "Developers:\n" \
+              "Dan Hrubec\n" \
+              "Devesh Patel\n" \
+              "Timothy Villaraza\n" \
+              "\n" \
+              "Logo Design:\n" \
+              "Eli Yu"\
+              "\n" \
+              "\n"
     desclbl = Label(desc,text=descStr)
     desclbl.pack()
-
 
 entry = Entry
 
@@ -131,19 +132,20 @@ if __name__ == "__main__":
     #creating window
     root = tk.Tk()
     root.title("Tweetify Launch by Dan Hrubec, Devesh Patel, Timothy Villaraza")
-    #default size
-    root.geometry("800x600")
+    # root.configure(bg="#191414")
 
+    #default size
+    root.geometry("800x900")
 
     #Welcome text controls
-    welcometxt = Label(root, text='Tweetify! ')
-    welcometxt.config(font=('Gotham',35,'bold'))
-    welcometxt.pack()
 
-    canvas = Canvas(root, width=400, height=400)
-    canvas.pack()
+
+    # Tweetify Logo
+    canvas = Canvas(root, width=500, height=400)
     img = PhotoImage(file="tweetify.png")
     canvas.create_image(50, 50, anchor=NW, image=img)
+    canvas.place(x=160, y=-20)
+    canvas.pack()
 
     #Description button controls
     projDescBtn = Button(root, text='Description')
@@ -152,7 +154,7 @@ if __name__ == "__main__":
     projDescBtn.config(bg='#d9d9d9')
     projDescBtn.config(activebackground='#8f8f8f')
     projDescBtn.config(activeforeground='#ffffff')
-    projDescBtn.place(x=250,y=250)
+    projDescBtn.place(x=250,y=450)
 
     #launch button controls
     launchButton = Button(root, text='Launch Application')
@@ -161,20 +163,13 @@ if __name__ == "__main__":
     launchButton.config(bg='#d9d9d9')
     launchButton.config(activebackground='#8f8f8f')
     launchButton.config(activeforeground='#ffffff')
-    launchButton.place(x=165,y=485)
-    usernameprompt = Label(root, text="Enter your spotify username.")
-    usernameprompt.place(x=300,y=375)
+    launchButton.place(x=165,y=685)
+
+    usernameprompt = Label(root, text="Enter your spotify username before running:")
+    usernameprompt.place(x=275, y=575)
+
     entry = tk.Entry(root)
-    entry.place(x=315, y=400)
-
-    submitbtn = Button(root, text='Submit')
-    submitbtn.place(x=325,y=425)
-
-
-
-
-
-
+    entry.place(x=325, y=600)
 
     #run it down
     root.mainloop()
