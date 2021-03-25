@@ -2,8 +2,8 @@
 Our inspiration for the project came with wanting to learn how to create our own GUI application in addition to API calls and web scraping.
 
 The software we decided to create had to meet the following criteria:
-- Match the theme of the hackathon
-- Create code that runs outside of a terminal
+- Match the theme of the hackathon (Music and Arts)
+- Create code that runs outside of a terminal (GUI Application)
 - Be fun to make
 
 ## What it does
