@@ -13,9 +13,8 @@ It then ranks the artists based on mentions and generates a Spotify playlist on 
 
 ## How To Use
 - Provide the respective tokens in the TOKENS.py file.
-
- - Open Tweetify and populate the white box under "Enter the Spotify username before running:". Once the white box is populated, click "Launch Application" then "Begin".
- - Spotify may ask permission for Tweetify to modify playlists. Press accept and the program will run.
+- Open Tweetify and populate the white box under "Enter the Spotify username before running:". Once the white box is populated, click "Launch Application" then "Begin".
+- Spotify may ask permission for Tweetify to modify playlists. Press accept and the program will run.
 
 ## How we built it
 The application is based on python, uses Tweepy to scan discord, Spoptipy to generate a playlist, and billboard.py to build a list of top 25 artists to query on Twitter.
@@ -53,4 +52,4 @@ As this is our first hackathon, team project, and python isn't our most used lan
 ## Known Bugs
 - Elements may not display properly when compiled on Mac
 - Program will not generate Spotify playlists if less than nine unique artists are mentioned at least once.
--- Simply run Tweetify again until the above condition is met.
+  - Simply run Tweetify again until the above condition is met.
