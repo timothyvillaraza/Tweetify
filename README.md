@@ -7,7 +7,7 @@ The software we decided to create had to meet the following criteria:
 - Be fun to make
 
 ## What it does
-Tweetify scans through Twitter and looks for popular artists that people talk about.
+Tweetify scans through Twitter and looks for popular artists that people are currently talking about.
 
 It then ranks the artists based on mentions and generates a Spotify playlist on the user's account.
 
