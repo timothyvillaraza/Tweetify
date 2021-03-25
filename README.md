@@ -1,3 +1,7 @@
+## Winner of the "Best Debut Hack" category for the 2nd H-Act 2021 hackathon
+
+Demonstration (Devpost Link): devpost.com/software/tweetify-bocpdm
+
 ## Inspiration
 Our inspiration for the project came with wanting to learn how to create our own GUI application in addition to API calls and web scraping.
 
@@ -11,7 +15,6 @@ Tweetify scans through Twitter and looks for popular artists that people are cur
 
 It then ranks the artists based on mentions and generates a Spotify playlist on the user's account.
 
-Demonstration (Devpost Link): devpost.com/software/tweetify-bocpdm
 
 ## How To Use
 - Provide the respective tokens in the TOKENS.py file.
