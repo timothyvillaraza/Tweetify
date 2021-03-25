@@ -1,6 +1,6 @@
 ## Winner of the "Best Debut Hack" category for the 2nd H-Act 2021 hackathon
 
-Demonstration (Devpost Link): devpost.com/software/tweetify-bocpdm
+[Demonstration (Devpost Link)](devpost.com/software/tweetify-bocpdm)
 
 ## Inspiration
 Our inspiration for the project came with wanting to learn how to create our own GUI application in addition to API calls and web scraping.
