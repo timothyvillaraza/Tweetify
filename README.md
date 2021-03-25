@@ -11,6 +11,8 @@ Tweetify scans through Twitter and looks for popular artists that people are cur
 
 It then ranks the artists based on mentions and generates a Spotify playlist on the user's account.
 
+Demonstration (Devpost Link): devpost.com/software/tweetify-bocpdm
+
 ## How To Use
 - Provide the respective tokens in the TOKENS.py file.
 - Open Tweetify and populate the white box under "Enter the Spotify username before running:". Once the white box is populated, click "Launch Application" then "Begin".
