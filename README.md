@@ -17,25 +17,25 @@ It then ranks the artists based on mentions and generates a Spotify playlist on 
 - Spotify may ask permission for Tweetify to modify playlists. Press accept and the program will run.
 
 ## How we built it
-The application is based on python, uses Tweepy to scan discord, Spoptipy to generate a playlist, and billboard.py to build a list of top 25 artists to query on Twitter.
+The application is based on python, uses Tweepy to scan discord, Spotipy to generate a playlist, and billboard.py to build a list of top 25 artists to query on Twitter.
 
 ## Challenges we ran into
 <ins>Data Scraping</ins>
 
 We wanted to dynamically create our list based on mentions of music or artists, but we could not find a way to categorize a topic and determine the specific song or artist. Instead, what opted to do was generate a list of 25 top artists from the billboard top 100, and use that as the search key for incoming tweets. We will then only save the top 10 most mentioned artists of the 25 at the time.
 
-<ins> Multithreading Application</ins>
+<ins>Multithreading Application</ins>
 
-We wanted to create an event-driven program, but we lack experience in multithreaded programming. Our application originally kept pausing when querying the data.
+Our teams first experience with multithreaded programming. We wanted the program to be interactable while scanning data from twitter.
 
 <ins> Team Coordination</ins>
 
-As this is our first hackathon, team project, and python isn't our most used language, we had to download tools for everything. We figured out logistics on the fly, and slowly created a rhythm that was just right for the team.
+As this is our first hackathon, team project, and not our most used programming language, we had to download tools and figure out logistics on the fly. We we slowly created a rhythm that was just right for the team.
 
 ## Accomplishments that we're proud of
 - Using multiple APIs to create a single functionality
 - Creating and user testing the application's GUI
-- Creating a logo for the application
+- Obtaining a logo for the application
 
 ## What we learned
 - API calls
