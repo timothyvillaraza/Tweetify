@@ -1,4 +1,4 @@
-## Winner of the "Best Debut Hack" category for the 2nd H-Act 2021 hackathon
+## Winner of the “Best Debut Hack” Category for the 2nd H-Act 2021 Hackathon
 
 [Demonstration (Devpost Link)](devpost.com/software/tweetify-bocpdm)
 
